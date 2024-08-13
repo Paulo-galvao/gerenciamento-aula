@@ -2,6 +2,8 @@ const prompt = require('prompt-sync')({sigint:true});
 
 const professor = require('./modules/professor.js');
 const sala = require('./modules/sala.js');
+const turno = require('./modules/turno.js');
+const curso = require('./modules/curso.js');
 
 let logged = true;
 
@@ -13,6 +15,8 @@ while(true) {
 O que você deseja gerenciar? 
 1. Professor;
 2. Sala;
+3. Turno;
+4. Curso;
 0. Sair`);
     
     const opcaoGerenciamneto = +prompt();
@@ -24,8 +28,8 @@ O que você deseja gerenciar?
             // PROFESSOR
             while(logged) {
 
-                console.log(`
-## GERENCIAMENTO DE PROFESSORES ##
+                console.log(`\n
+## GERENCIAMENTO DE PROFESSORES ##\n
 1. Cadastrar professor;
 2. Listar professores;
 3. Atualizar professor;
@@ -63,7 +67,7 @@ O que você deseja gerenciar?
         while(logged) {
 
             console.log(`
-## GERENCIAMENTO DE SALAS ##
+## GERENCIAMENTO DE SALAS ##\n
 1. Cadastrar sala;
 2. Listar salas;
 3. Atualizar sala;
@@ -96,6 +100,82 @@ O que você deseja gerenciar?
         } // SALA
         break;
             
+        case 3:
+            // TURNO
+            while(logged) {
+
+                console.log(`
+## GERENCIAMENTO DE TURNO ##\n
+1. Cadastrar turno;
+2. Listar turno;
+3. Atualizar turno;
+4. Remover cadastro de turno;
+0. Voltar`
+                );
+                const opcaoTurno = +prompt();
+                    switch(opcaoTurno) {
+                        case 1:
+                            turno.criar();                            
+                            break;
+                        case 2:
+                            turno.listar();
+                            break;
+                        case 3:
+                            turno.atualizar();
+                            break;
+                        case 4:
+                            turno.remover();
+                            break;
+                        case 0:
+                            logged = false;
+                            break;
+                        default:
+                            console.log("Opção não encontrada");
+                            break;
+                    }
+                    
+                
+            } // TURNO
+            break;
+
+            case 4:
+                // CURSO
+                while(logged) {
+    
+                    console.log(`
+## GERENCIAMENTO DE CURSO ##\n
+1. Cadastrar curso;
+2. Listar curso;
+3. Atualizar curso;
+4. Remover cadastro de curso;
+0. Voltar`
+                    );
+                    const opcaoCurso = +prompt();
+                        switch(opcaoCurso) {
+                            case 1:
+                                curso.criar();                            
+                                break;
+                            case 2:
+                                curso.listar();
+                                break;
+                            case 3:
+                                curso.atualizar();
+                                break;
+                            case 4:
+                                curso.remover();
+                                break;
+                            case 0:
+                                logged = false;
+                                break;
+                            default:
+                                console.log("Opção não encontrada");
+                                break;
+                        }
+                        
+                    
+                } // CURSO
+                break;
+        
         // GERENCIAMENTO GERAL
         case 0:
             return;
