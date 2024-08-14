@@ -4,6 +4,9 @@ const professor = require('./modules/professor.js');
 const sala = require('./modules/sala.js');
 const turno = require('./modules/turno.js');
 const curso = require('./modules/curso.js');
+const materia = require('./modules/materia.js');
+const aluno = require('./modules/aluno.js');
+const aula = require('./modules/aula.js');
 
 let logged = true;
 
@@ -17,6 +20,9 @@ O que você deseja gerenciar?
 2. Sala;
 3. Turno;
 4. Curso;
+5. Materia;
+6. Aluno;
+7. Aula;
 0. Sair`);
     
     const opcaoGerenciamneto = +prompt();
@@ -107,7 +113,7 @@ O que você deseja gerenciar?
                 console.log(`
 ## GERENCIAMENTO DE TURNO ##\n
 1. Cadastrar turno;
-2. Listar turno;
+2. Listar turnos;
 3. Atualizar turno;
 4. Remover cadastro de turno;
 0. Voltar`
@@ -145,7 +151,7 @@ O que você deseja gerenciar?
                     console.log(`
 ## GERENCIAMENTO DE CURSO ##\n
 1. Cadastrar curso;
-2. Listar curso;
+2. Listar cursos;
 3. Atualizar curso;
 4. Remover cadastro de curso;
 0. Voltar`
@@ -175,6 +181,120 @@ O que você deseja gerenciar?
                     
                 } // CURSO
                 break;
+
+                case 5:
+                // MATERIA
+                while(logged) {
+    
+                    console.log(`
+## GERENCIAMENTO DE CURSO ##\n
+1. Cadastrar materia;
+2. Listar materias;
+3. Atualizar materia;
+4. Remover cadastro de materia;
+0. Voltar`
+                    );
+                    const opcaoMateria = +prompt();
+                        switch(opcaoMateria) {
+                            case 1:
+                                materia.criar();                            
+                                break;
+                            case 2:
+                                materia.listar();
+                                break;
+                            case 3:
+                                materia.atualizar();
+                                break;
+                            case 4:
+                                materia.remover();
+                                break;
+                            case 0:
+                                logged = false;
+                                break;
+                            default:
+                                console.log("Opção não encontrada");
+                                break;
+                        }
+                        
+                    
+                } // MATERIA
+                break;
+
+                case 6:
+                // ALUNO
+                while(logged) {
+    
+                    console.log(`
+## GERENCIAMENTO DE CURSO ##\n
+1. Cadastrar aluno;
+2. Listar alunos;
+3. Atualizar aluno;
+4. Remover cadastro de aluno;
+0. Voltar`
+                    );
+                    const opcaoAluno = +prompt();
+                        switch(opcaoAluno) {
+                            case 1:
+                                aluno.criar();                            
+                                break;
+                            case 2:
+                                aluno.listar();
+                                break;
+                            case 3:
+                                aluno.atualizar();
+                                break;
+                            case 4:
+                                aluno.remover();
+                                break;
+                            case 0:
+                                logged = false;
+                                break;
+                            default:
+                                console.log("Opção não encontrada");
+                                break;
+                        }
+                        
+                    
+                } // ALUNO
+                break;
+
+                case 7:
+                    // AULA
+                    while(logged) {
+        
+                        console.log(`
+## GERENCIAMENTO DE CURSO ##\n
+1. Cadastrar aula;
+2. Listar aula;
+3. Atualizar aula;
+4. Remover cadastro de aula;
+0. Voltar`
+                        );
+                        const opcaoAula = +prompt();
+                            switch(opcaoAula) {
+                                case 1:
+                                    aula.criar();                            
+                                    break;
+                                case 2:
+                                    aula.listar();
+                                    break;
+                                case 3:
+                                    aula.atualizar();
+                                    break;
+                                case 4:
+                                    aula.remover();
+                                    break;
+                                case 0:
+                                    logged = false;
+                                    break;
+                                default:
+                                    console.log("Opção não encontrada");
+                                    break;
+                            }
+                            
+                        
+                    } // AULA
+                    break;
         
         // GERENCIAMENTO GERAL
         case 0:

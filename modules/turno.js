@@ -1,6 +1,19 @@
 const prompt = require('prompt-sync')({sigint:true});
-const db = [];
-let lastId = 0;
+const db = [
+    {
+        id: 1,
+        nome: "noite",
+        inicio: 18,
+        termino: 22
+    }
+];
+
+let lastId;
+if(db.length == 0) {
+    lastId = 0;
+} else {
+    lastId = db[db.length - 1].id;
+}
 
 function model() {
     const id = lastId;

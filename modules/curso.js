@@ -1,8 +1,21 @@
 const prompt = require('prompt-sync')({sigint:true});
 const turno = require('./turno');
 
-const db = [];
-let lastId = 0;
+const db = [
+    {
+        id: 1,
+        nome: "filosofia",
+        horasTotais: 2000,
+        idTurno: 1
+    }
+];
+
+let lastId;
+if(db.length == 0) {
+    lastId = 0;
+} else {
+    lastId = db[db.length - 1].id;
+}
 
 function model() {
     if(turno.db.length == 0) {
@@ -96,4 +109,4 @@ function remover() {
     }
 }
 
-module.exports = {criar, listar, atualizar, remover};
+module.exports = {criar, listar, atualizar, remover, db};

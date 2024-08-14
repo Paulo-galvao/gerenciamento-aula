@@ -1,8 +1,14 @@
 const prompt = require('prompt-sync')({sigint:true});
+const professor = require('./professor.js');
+const materia = require('./materia.js');
+const sala = require('./sala.js');
+
 const db = [
     {
         id: 1,
-        numero: 21
+        idProfessor: 1,
+        idMateria: 1,
+        idSala: 1
     }
 ];
 
@@ -14,16 +20,32 @@ if(db.length == 0) {
 }
 
 function model() {
-    const numero = prompt("Digite o numero: ");
-    const id = lastId;
-
-    if(numero != "" && !isNaN(numero)) {
-        return {
-            id,
-            numero
-        }
+    if(professor.db.length == 0) {
+        console.log("Ainda não possuimos nenhum cadastro de professor");
+    } else if(materia.db.length == 0) {
+        console.log("Ainda não possuimos nenhum cadastro de materia");
+    } else if(sala.db.length == 0) {
+        console.log("Ainda não possuimos nenhum cadastro de sala");
     } else {
-        return undefined;
+
+        const id = lastId;
+        professor.listar();
+        const idProfessor = prompt("Digite o ID do professor: ");
+        materia.listar();
+        const idMateria = prompt("Digite o ID da matéria: ");
+        sala.listar();
+        const idSala = prompt("Escolha o ID da sala: ");
+    
+        if(idProfessor != "" && idMateria != "" && idMateria != "") {
+            return {
+                id,
+                idProfessor,
+                idMateria, 
+                idSala
+            }
+        } else {
+            return undefined;
+        }
     }
 }
 
@@ -41,7 +63,7 @@ function criar() {
 function listar() {
     if(db.length > 0) {
         console.log("Lista atualizada");
-        db.forEach(el => console.log(`ID: ${el.id}\nNome: ${el.numero}`))
+        db.forEach(el => console.log(`ID: ${el.id}\nID_professor: ${el.idProfessor} \nID_materia: ${el.idMateria}\n ID_sala: ${el.idSala}`))
     } else {
         console.log("Ainda não possuimos nenhum cadastro");
     }

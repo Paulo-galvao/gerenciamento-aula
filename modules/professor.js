@@ -1,6 +1,17 @@
 const prompt = require('prompt-sync')({sigint:true});
-const db = [];
-let lastId = 0;
+const db = [
+    {
+        id: 1,
+        nome: "Gevanildo"
+    }
+];
+
+let lastId;
+if(db.length == 0) {
+    lastId = 0;
+} else {
+    lastId = db[db.length - 1].id;
+}
 
 function model() {
     const nome = prompt("Digite o nome: ");
@@ -84,4 +95,4 @@ function remover() {
     }
 }
 
-module.exports = {criar, listar, atualizar, remover};
+module.exports = {criar, listar, atualizar, remover, db};

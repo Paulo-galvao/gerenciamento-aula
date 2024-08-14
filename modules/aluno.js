@@ -1,8 +1,11 @@
 const prompt = require('prompt-sync')({sigint:true});
+const curso = require('./curso');
+
 const db = [
     {
         id: 1,
-        numero: 21
+        nome: "Durval",
+        idCurso: 1
     }
 ];
 
@@ -14,16 +17,24 @@ if(db.length == 0) {
 }
 
 function model() {
-    const numero = prompt("Digite o numero: ");
-    const id = lastId;
-
-    if(numero != "" && !isNaN(numero)) {
-        return {
-            id,
-            numero
-        }
+    if(curso.db.length == 0) {
+        console.log("Ainda não possuimos nenhum cadastro de curso");
     } else {
-        return undefined;
+
+        const id = lastId;
+        const nome = prompt("Digite o nome do aluno: ");
+        curso.listar();
+        const idCurso = prompt("Escolha o ID do curso: ");
+    
+        if(nome != "" && idCurso != "") {
+            return {
+                id,
+                nome,
+                idCurso
+            }
+        } else {
+            return undefined;
+        }
     }
 }
 
@@ -41,7 +52,7 @@ function criar() {
 function listar() {
     if(db.length > 0) {
         console.log("Lista atualizada");
-        db.forEach(el => console.log(`ID: ${el.id}\nNome: ${el.numero}`))
+        db.forEach(el => console.log(`ID: ${el.id}\nNome: ${el.nome} \nID_curso: ${el.idCurso}`));
     } else {
         console.log("Ainda não possuimos nenhum cadastro");
     }
